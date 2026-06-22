@@ -1,14 +1,15 @@
 {
+  "assetManagement": "مدیریت دارایی",
   "assets": "دارایی‌ها",
   "basicInfo": "اطلاعات پایه",
   "manufacturer": "سازنده",
   "operator": "بهره‌بردار",
   "attributes": "صفات",
-  "specs": "مشخصات",
+  "specs": "مشخصات فنی",
   "features": "ویژگی‌ها",
-  "assetManagement": "مدیریت دارایی",
   "details": "جزئیات",
   "selectCategory": "یک دسته را انتخاب کنید",
   "selectSubcategory": "یک زیرمجموعه را انتخاب کنید",
-  "noItems": "هیچ موردی موجود نیست"
+  "noItems": "هیچ موردی موجود نیست",
+  "dashboard": "داشبورد"
 }

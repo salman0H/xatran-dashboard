@@ -1,4 +1,5 @@
 {
+  "assetManagement": "Asset Management",
   "assets": "Assets",
   "basicInfo": "Basic Information",
   "manufacturer": "Manufacturer",
@@ -6,9 +7,9 @@
   "attributes": "Attributes",
   "specs": "Specifications",
   "features": "Features",
-  "assetManagement": "Asset Management",
   "details": "Details",
   "selectCategory": "Select a category",
   "selectSubcategory": "Select a subcategory",
-  "noItems": "No items available"
+  "noItems": "No items available",
+  "dashboard": "Dashboard"
 }

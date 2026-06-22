@@ -60,7 +60,7 @@ export function DashboardGrid({
         <AddWidgetButton existingTypes={existingTypes} onAdd={onAddWidget} />
       </div>
 
-        {error && <Alert title={error} type="error" showIcon closable className="mb-4" />}
+      {error && <Alert title={error} type="error" showIcon closable className="mb-4" />}
 
       {widgets.length === 0 ? (
         <Empty description={t('emptyDashboard')} className="py-16" />

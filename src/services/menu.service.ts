@@ -1,28 +1,24 @@
+// src/services/menu.service.ts
 import { apiService } from './api.service'
 
-export interface MenuItem {
+export interface MegaMenuItem {
   id: string
   label: string
   icon?: string
   route?: string
-  children?: MenuItem[]
+  children?: MegaMenuItem[]
 }
 
-export interface MenuSection {
+export interface MegaMenuColumn {
   id: string
-  label: string
-  items: MenuItem[]
+  title: string
+  items: MegaMenuItem[]
 }
 
-export interface MenuData {
-  menus: MenuSection[]
+export interface MegaMenuData {
+  columns: MegaMenuColumn[]
 }
 
-export async function fetchMenuData(): Promise<MenuData> {
-  return apiService.get<MenuData>('/menus')
-}
-
-export async function fetchMenuItems(): Promise<MenuItem[]> {
-  const data = await fetchMenuData()
-  return data.menus.flatMap((section) => section.items)
+export async function fetchMegaMenu(): Promise<MegaMenuData> {
+  return apiService.get<MegaMenuData>('/megaMenu')
 }

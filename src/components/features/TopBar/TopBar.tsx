@@ -1,113 +1,145 @@
 import { useTranslation } from 'react-i18next'
 import { LanguageSwitcher } from '@/components/features/LanguageSwitcher/LanguageSwitcher'
 import { UserMenu } from '@/components/features/UserMenu/UserMenu'
-import { Button, Input, Badge } from 'antd'
-import { SearchOutlined, BellOutlined, SettingOutlined } from '@ant-design/icons'
+import { Button, Input, Badge, Divider, Tooltip } from 'antd'
+import {
+  SearchOutlined,
+  BellOutlined,
+  SettingOutlined,
+  QuestionCircleOutlined,
+  DownOutlined,
+  DashboardOutlined,
+  ApartmentOutlined,
+  AppstoreOutlined,
+} from '@ant-design/icons'
 import { useAppContext } from '@/context/AppContext'
 import { useState, useRef } from 'react'
 import { MegaMenu } from './MegaMenu'
-import { useMenuData } from '@/hooks/useMenuData'
-import { Link } from 'react-router-dom'
+import { useMegaMenu } from '@/hooks/useMegaMenu'
+import { Link, useLocation } from 'react-router-dom'
 
 export function TopBar() {
-  const { t } = useTranslation(['common', 'nav'])
+  const { t } = useTranslation(['common', 'nav', 'menu'])
   const { dir } = useAppContext()
-  const { menuItems } = useMenuData()
-  const [activeMenuId, setActiveMenuId] = useState<string | null>(null)
-  const triggerRefs = useRef<Map<string, HTMLElement>>(new Map())
+  const location = useLocation()
+  const { data: megaMenuData, loading, error } = useMegaMenu()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const triggerRef = useRef<HTMLButtonElement>(null)
 
-  const handleMenuClick = (id: string) => {
-    setActiveMenuId(activeMenuId === id ? null : id)
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen)
   }
 
   const handleMenuClose = () => {
-    setActiveMenuId(null)
+    setIsMenuOpen(false)
   }
 
   const isRtl = dir === 'rtl'
+  const menuLabel = t('menu:assetManagement') || 'Asset Management'
+  const hasMenuData = megaMenuData && megaMenuData.columns && megaMenuData.columns.length > 0
 
   return (
-    <header className="bg-white border-b border-gray-200 flex items-center justify-between px-6 py-2 h-[64px] shadow-sm">
-      {/* لوگو */}
-      <div className="flex items-center gap-4">
-        <Link to="/" className="flex items-center gap-2 no-underline">
-          <div className="w-9 h-9 bg-blue-600 rounded-lg grid place-items-center text-white text-base font-bold shadow-sm">
-            C
+    <header className="h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md px-4 flex items-center justify-between sticky top-0 z-[1000] select-none">
+      <div className="flex items-center gap-6">
+        <Link to="/" className="flex items-center gap-2.5">
+          <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <ApartmentOutlined className="text-white text-lg" />
           </div>
-          <div>
-            <div className="text-[16px] font-semibold text-gray-900 leading-tight">CoreUI</div>
-            <div className="text-[9px] text-gray-400 font-mono -mt-0.5">v2.1.0</div>
-          </div>
+          <span className="font-bold text-slate-800 tracking-tight hidden sm:block text-[15px]">
+            PAM System
+          </span>
         </Link>
-      </div>
 
-      {/* منوی اصلی */}
-      <nav className="hidden xl:flex items-center gap-0.5">
-        {menuItems.map((item) => {
-          const label = t(`nav:${item.label}`) || item.label
-          return (
-            <div
-              key={item.id}
-              className="relative"
-              ref={(el) => {
-                if (el) triggerRefs.current.set(item.id, el)
-              }}
+        <Divider type="vertical" className="!h-5 !border-slate-200 hidden md:block" />
+
+        <nav className="hidden md:flex items-center gap-1">
+          <Link to="/">
+            <Button
+              type="text"
+              icon={<DashboardOutlined className="text-[15px]" />}
+              className={`!h-10 !px-4 !flex !items-center !gap-2 !rounded-xl !font-medium transition-all ${
+                location.pathname === '/'
+                  ? '!bg-blue-50 !text-blue-600'
+                  : '!text-slate-600 hover:!bg-slate-50 hover:!text-slate-900'
+              }`}
             >
-              <button
-                onClick={() => handleMenuClick(item.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  activeMenuId === item.id
-                    ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+              {t('nav:dashboard')}
+            </Button>
+          </Link>
+
+          {!loading && !error && hasMenuData && (
+            <div className="relative">
+              <Button
+                ref={triggerRef}
+                type="text"
+                onClick={handleMenuToggle}
+                icon={<AppstoreOutlined className="text-[15px]" />}
+                className={`!h-10 !px-4 !flex !items-center !gap-2 !rounded-xl !font-medium transition-all ${
+                  isMenuOpen
+                    ? '!bg-slate-100 !text-slate-900'
+                    : '!text-slate-600 hover:!bg-slate-50 hover:!text-slate-900'
                 }`}
               >
-                {label}
-                {item.children && item.children.length > 0 && (
-                  <span className="text-[10px] mr-1">▾</span>
-                )}
-              </button>
-              {item.children && item.children.length > 0 && activeMenuId === item.id && (
-                <MegaMenu
-                  item={item}
-                  isOpen={true}
-                  onClose={handleMenuClose}
-                  triggerRef={{ current: triggerRefs.current.get(item.id) || null }}
+                <span>{menuLabel}</span>
+                <DownOutlined
+                  className={`text-[10px] transition-transform duration-200 ${
+                    isMenuOpen ? 'rotate-180' : ''
+                  }`}
                 />
-              )}
+              </Button>
+
+              <MegaMenu
+                data={megaMenuData!}
+                isOpen={isMenuOpen}
+                onClose={handleMenuClose}
+                triggerRef={triggerRef}
+              />
             </div>
-          )
-        })}
-      </nav>
+          )}
+        </nav>
+      </div>
 
-      {/* بخش راست */}
-      <div className="flex items-center gap-3">
-        <div className="hidden md:flex items-center">
-          <Input
-            placeholder={t('common:search')}
-            prefix={<SearchOutlined className="text-gray-400" />}
-            suffix={<span className="text-[10px] text-gray-400 font-mono bg-gray-100 px-1.5 py-0.5 rounded">⌘K</span>}
-            className="!w-[220px] !bg-gray-50 !border-gray-200 !rounded-lg !text-[13px] hover:!border-gray-300 focus:!border-blue-500"
-            size="middle"
-          />
-        </div>
+      <div className="flex items-center gap-2">
+        <Input
+          prefix={<SearchOutlined className="text-slate-400" />}
+          placeholder={t('common:search')}
+          className="!w-64 !h-10 !bg-slate-50 hover:!bg-slate-100 focus:!bg-white !border-none !rounded-xl !hidden lg:flex transition-all"
+        />
 
-        <Badge count={5} size="small" offset={[0, 0]}>
+        <Divider type="vertical" className="!h-5 !border-slate-200 hidden md:block" />
+
+        <Tooltip title={t('common:notifications')}>
+          <Badge count={5} size="small" offset={[-2, 2]} color="#2563EB">
+            <Button
+              type="text"
+              icon={<BellOutlined className="text-[17px]" />}
+              aria-label={t('common:notifications')}
+              className="!w-10 !h-10 !flex !items-center !justify-center !text-slate-500 hover:!bg-slate-100 hover:!text-slate-800 !rounded-full transition-colors"
+            />
+          </Badge>
+        </Tooltip>
+
+        <Tooltip title="Help">
           <Button
             type="text"
-            icon={<BellOutlined className="text-lg" />}
-            aria-label={t('common:notifications')}
-            className="!w-9 !h-9 !flex !items-center !justify-center !text-gray-500 hover:!bg-gray-100 hover:!text-gray-700 !rounded-lg"
+            icon={<QuestionCircleOutlined className="text-[17px]" />}
+            aria-label="Help"
+            className="!w-10 !h-10 !hidden sm:!flex !items-center !justify-center !text-slate-500 hover:!bg-slate-100 hover:!text-slate-800 !rounded-full transition-colors"
           />
-        </Badge>
+        </Tooltip>
 
         <LanguageSwitcher />
 
-        <Button
-          type="text"
-          icon={<SettingOutlined className="text-lg" />}
-          aria-label={t('common:settings')}
-          className="!w-9 !h-9 !flex !items-center !justify-center !text-gray-500 hover:!bg-gray-100 hover:!text-gray-700 !rounded-lg"
-        />
+        <Tooltip title={t('common:settings')}>
+          <Button
+            type="text"
+            icon={<SettingOutlined className="text-[17px]" />}
+            aria-label={t('common:settings')}
+            className="!w-10 !h-10 !flex !items-center !justify-center !text-slate-500 hover:!bg-slate-100 hover:!text-slate-800 !rounded-full transition-colors"
+          />
+        </Tooltip>
+
+        <Divider type="vertical" className="!h-6 !border-slate-200" />
 
         <UserMenu />
       </div>

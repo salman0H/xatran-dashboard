@@ -1,21 +1,6 @@
 {
   "dashboardWidgets": [
     {
-      "id": "stats",
-      "type": "stats",
-      "order": 2
-    },
-    {
-      "id": "substations-stats",
-      "type": "substationsStats",
-      "order": 3
-    },
-    {
-      "id": "user-profile",
-      "type": "userProfile",
-      "order": 1
-    },
-    {
       "id": "quick-actions",
       "type": "quickActions",
       "order": 0
@@ -23,22 +8,22 @@
     {
       "id": "substations-table",
       "type": "substationsTable",
-      "order": 4
+      "order": 1
     },
     {
       "id": "kpi",
       "type": "kpi",
-      "order": 5
+      "order": 2
     },
     {
       "id": "chart",
       "type": "chart",
-      "order": 6
+      "order": 3
     },
     {
       "id": "advanced-table",
       "type": "advancedTable",
-      "order": 7
+      "order": 4
     }
   ],
   "menus": [
@@ -252,5 +237,73 @@
     "substations": [],
     "components": [],
     "connections": []
+  },
+  "megaMenu": {
+    "columns": [
+      {
+        "id": "col1",
+        "title": "assets",
+        "items": [
+          {
+            "id": "assets-root",
+            "label": "assets",
+            "icon": "ti-folder",
+            "route": "/assets"
+          }
+        ]
+      },
+      {
+        "id": "col2",
+        "title": "basicInfo",
+        "items": [
+          {
+            "id": "basic-info",
+            "label": "basicInfo",
+            "icon": "ti-file",
+            "route": "/basic-info",
+            "children": [
+              {
+                "id": "manufacturer",
+                "label": "manufacturer",
+                "icon": "ti-settings",
+                "route": "/manufacturer"
+              },
+              {
+                "id": "operator",
+                "label": "operator",
+                "icon": "ti-user",
+                "route": "/operator"
+              },
+              {
+                "id": "attributes",
+                "label": "attributes",
+                "icon": "ti-list",
+                "route": "/attributes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "col3",
+        "title": "details",
+        "items": [
+          {
+            "id": "specs",
+            "label": "specs",
+            "icon": "ti-file-text",
+            "route": "/specs",
+            "children": [
+              {
+                "id": "features",
+                "label": "features",
+                "icon": "ti-star",
+                "route": "/features"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

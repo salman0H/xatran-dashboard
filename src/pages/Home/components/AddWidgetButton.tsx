@@ -1,3 +1,4 @@
+// AddWidgetButton.tsx
 import { Button, Dropdown } from 'antd'
 import type { MenuProps } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
@@ -29,7 +30,7 @@ export function AddWidgetButton({ existingTypes, onAdd }: AddWidgetButtonProps) 
       menu={{ items }}
       disabled={isDisabled}
       trigger={['click']}
-      placement="bottomEnd"
+      placement="bottomLeft"
     >
       <Button icon={<PlusOutlined />} disabled={isDisabled}>
         {t('addWidget')}
