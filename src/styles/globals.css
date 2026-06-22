@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: #2563EB;
+    --accent-dim: #EFF6FF;
+    --accent-text: #1D4ED8;
+    --success: #059669;
+    --warning: #D97706;
+    --danger: #DC2626;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    --sidebar-bg: #FFFFFF;
+    --sidebar-border: #E8ECF0;
+    --sidebar-text: #1E293B;
+    --sidebar-muted: #8896AB;
+    --sidebar-icon: #94A3B8;
+    --sidebar-hover-bg: #F1F5F9;
+    --sidebar-active-bg: #EFF6FF;
+    --sidebar-primary: #2563EB;
+    --sidebar-primary-border: rgba(37, 99, 235, 0.18);
+  }
+
+  html {
+    font-family: 'IBM Plex Sans', Vazirmatn, ui-sans-serif, system-ui;
+  }
+
+  html[dir='rtl'] {
+    font-family: Vazirmatn, 'IBM Plex Sans', ui-sans-serif, system-ui;
+  }
+
+  body {
+    @apply bg-app-bg text-slate-900 text-sm leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-accent text-white text-sm font-medium rounded-md shadow-sm hover:bg-accent-text focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-colors;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-white text-slate-700 text-sm font-medium rounded-md border border-slate-300 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-colors;
+  }
+  .sidebar-transition {
+    transition: width 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+  }
+  .bg-sidebar { background-color: var(--sidebar-bg); }
+  .border-sidebar-border { border-color: var(--sidebar-border); }
+  .text-sidebar-text { color: var(--sidebar-text); }
+  .text-sidebar-muted { color: var(--sidebar-muted); }
+  .text-sidebar-icon { color: var(--sidebar-icon); }
+  .text-sidebar-primary { color: var(--sidebar-primary); }
+  .bg-sidebar-hover { background-color: var(--sidebar-hover-bg); }
+  .bg-sidebar-active { background-color: var(--sidebar-active-bg); }
+  .border-sidebar-primary-border { border-color: var(--sidebar-primary-border); }
+  .rounded-core { border-radius: var(--radius-md); }
+  .bg-accent-dim { background-color: var(--accent-dim); }
+}

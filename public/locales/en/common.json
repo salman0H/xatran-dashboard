@@ -1,0 +1,15 @@
+{
+  "search": "Search…",
+  "notifications": "Notifications",
+  "settings": "Settings",
+  "userName": "Admin User",
+  "userRole": "Super Admin",
+  "userMenuAriaLabel": "User menu",
+  "loading": "Loading…",
+  "error": "Something went wrong",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "logout": "Logout",
+  "userManagement": "User Management",
+  "systemSettings": "System Settings"
+}

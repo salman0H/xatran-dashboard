@@ -1,0 +1,256 @@
+{
+  "dashboardWidgets": [
+    {
+      "id": "stats",
+      "type": "stats",
+      "order": 2
+    },
+    {
+      "id": "substations-stats",
+      "type": "substationsStats",
+      "order": 3
+    },
+    {
+      "id": "user-profile",
+      "type": "userProfile",
+      "order": 1
+    },
+    {
+      "id": "quick-actions",
+      "type": "quickActions",
+      "order": 0
+    },
+    {
+      "id": "substations-table",
+      "type": "substationsTable",
+      "order": 4
+    },
+    {
+      "id": "kpi",
+      "type": "kpi",
+      "order": 5
+    },
+    {
+      "id": "chart",
+      "type": "chart",
+      "order": 6
+    },
+    {
+      "id": "advanced-table",
+      "type": "advancedTable",
+      "order": 7
+    }
+  ],
+  "menus": [
+    {
+      "id": "main",
+      "label": "mainNav",
+      "items": [
+        {
+          "id": "dashboard",
+          "label": "dashboard",
+          "icon": "ti-layout-dashboard",
+          "route": "/"
+        },
+        {
+          "id": "asset-management",
+          "label": "assetManagement",
+          "icon": "ti-asset",
+          "children": [
+            {
+              "id": "assets",
+              "label": "assets",
+              "children": [
+                {
+                  "id": "basic-info",
+                  "label": "basicInfo",
+                  "children": [
+                    {
+                      "id": "manufacturer",
+                      "label": "manufacturer",
+                      "route": "/assets/manufacturer",
+                      "children": [
+                        {
+                          "id": "specs",
+                          "label": "specs",
+                          "route": "/assets/manufacturer/specs"
+                        },
+                        {
+                          "id": "attributes",
+                          "label": "features",
+                          "route": "/assets/manufacturer/attributes"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "operator",
+                      "label": "operator",
+                      "route": "/assets/operator",
+                      "children": [
+                        {
+                          "id": "specs-operator",
+                          "label": "specs",
+                          "route": "/assets/operator/specs"
+                        },
+                        {
+                          "id": "attributes-operator",
+                          "label": "features",
+                          "route": "/assets/operator/attributes"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "attributes-main",
+                      "label": "attributes",
+                      "route": "/assets/attributes",
+                      "children": [
+                        {
+                          "id": "specs-attributes",
+                          "label": "specs",
+                          "route": "/assets/attributes/specs"
+                        },
+                        {
+                          "id": "attributes-attributes",
+                          "label": "features",
+                          "route": "/assets/attributes/attributes"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "translations": {
+    "en": {
+      "common": {
+        "search": "Search…",
+        "notifications": "Notifications",
+        "settings": "Settings",
+        "userName": "Admin User",
+        "userRole": "Super Admin",
+        "userMenuAriaLabel": "User menu",
+        "loading": "Loading…",
+        "error": "Something went wrong",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+      },
+      "nav": {
+        "mainNavAriaLabel": "Main navigation",
+        "dashboard": "Dashboard"
+      },
+      "dashboard": {
+        "pageTitle": "Dashboard",
+        "pageSubtitle": "CoreUI — modular dashboard shell",
+        "flowTitle": "Flow Progress",
+        "totalNodesLabel": "Total Nodes",
+        "totalEdgesLabel": "Total Edges",
+        "substations": "Substations",
+        "activeSubstations": "Active",
+        "totalComponents": "Components",
+        "substationName": "Substation Name",
+        "location": "Location",
+        "componentCount": "Components",
+        "actions": "Actions",
+        "viewDiagram": "View",
+        "viewAll": "View All",
+        "editFlowchart": "Edit Flowchart",
+        "manageTree": "Manage Tree",
+        "quickActions": "Quick Actions",
+        "createNew": "Create New",
+        "dragHint": "Drag widgets to reorder them",
+        "addWidget": "Add widget",
+        "removeWidgetTitle": "Remove this widget?",
+        "removeWidgetDescription": "You can add it back later from \"Add widget\".",
+        "dragWidget": "Drag to reorder",
+        "emptyDashboard": "No widgets on your dashboard yet. Add one to get started.",
+        "widgetStats": "Flow Stats",
+        "widgetSubstationsStats": "Substation Stats",
+        "widgetUserProfile": "User Profile",
+        "widgetQuickActions": "Quick Actions",
+        "widgetSubstationsTable": "Substations Table",
+        "widgetKPI": "KPI Dashboard",
+        "widgetChart": "Analytics Chart",
+        "widgetAdvancedTable": "Advanced Table",
+        "chartTitle": "Annual Growth Trend",
+        "advancedTableTitle": "Substations Management",
+        "status": "Status",
+        "active": "Active",
+        "edit": "Edit",
+        "delete": "Delete"
+      }
+    },
+    "fa": {
+      "common": {
+        "search": "جستجو…",
+        "notifications": "اعلان‌ها",
+        "settings": "تنظیمات",
+        "userName": "مدیر سیستم",
+        "userRole": "سوپر ادمین",
+        "userMenuAriaLabel": "منوی کاربر",
+        "loading": "در حال بارگذاری…",
+        "error": "خطایی رخ داد",
+        "confirm": "تأیید",
+        "cancel": "انصراف"
+      },
+      "nav": {
+        "mainNavAriaLabel": "ناوبری اصلی",
+        "dashboard": "داشبورد"
+      },
+      "dashboard": {
+        "pageTitle": "داشبورد",
+        "pageSubtitle": "CoreUI — پوسته داشبورد ماژولار",
+        "flowTitle": "فلوچارت",
+        "totalNodesLabel": "تعداد گره‌ها",
+        "totalEdgesLabel": "تعداد اتصال‌ها",
+        "substations": "پست‌ها",
+        "activeSubstations": "فعال",
+        "totalComponents": "قطعات",
+        "substationName": "نام پست",
+        "location": "موقعیت",
+        "componentCount": "قطعات",
+        "actions": "عملیات",
+        "viewDiagram": "مشاهده",
+        "viewAll": "مشاهده همه",
+        "editFlowchart": "ویرایش فلوچارت",
+        "manageTree": "مدیریت درخت",
+        "quickActions": "دسترسی سریع",
+        "createNew": "ایجاد جدید",
+        "dragHint": "ویجت‌ها را برای تغییر ترتیب جابجا کنید",
+        "addWidget": "افزودن ویجت",
+        "removeWidgetTitle": "این ویجت حذف شود؟",
+        "removeWidgetDescription": "می‌توانید بعداً آن را از «افزودن ویجت» دوباره اضافه کنید.",
+        "dragWidget": "برای جابجایی بکشید",
+        "emptyDashboard": "هنوز ویجتی در داشبورد شما نیست. برای شروع یک ویجت اضافه کنید.",
+        "widgetStats": "آمار فلوچارت",
+        "widgetSubstationsStats": "آمار پست‌ها",
+        "widgetUserProfile": "پروفایل کاربر",
+        "widgetQuickActions": "دسترسی سریع",
+        "widgetSubstationsTable": "جدول پست‌ها",
+        "widgetKPI": "داشبورد شاخص‌ها",
+        "widgetChart": "نمودار تحلیلی",
+        "widgetAdvancedTable": "جدول پیشرفته",
+        "chartTitle": "روند رشد سالانه",
+        "advancedTableTitle": "مدیریت پست‌ها",
+        "status": "وضعیت",
+        "active": "فعال",
+        "edit": "ویرایش",
+        "delete": "حذف"
+      }
+    }
+  },
+  "nodes": [],
+  "edges": [],
+  "formData": [],
+  "treeData": [],
+  "details": [],
+  "diagram": {
+    "substations": [],
+    "components": [],
+    "connections": []
+  }
+}

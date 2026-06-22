@@ -1,0 +1,14 @@
+{
+  "assets": "Assets",
+  "basicInfo": "Basic Information",
+  "manufacturer": "Manufacturer",
+  "operator": "Operator",
+  "attributes": "Attributes",
+  "specs": "Specifications",
+  "features": "Features",
+  "assetManagement": "Asset Management",
+  "details": "Details",
+  "selectCategory": "Select a category",
+  "selectSubcategory": "Select a subcategory",
+  "noItems": "No items available"
+}
