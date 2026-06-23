@@ -238,6 +238,42 @@
     "components": [],
     "connections": []
   },
+  "manufacturers": [
+    {
+      "id": "1",
+      "name": "زیمنس انرژی",
+      "brand": "Siemens Energy",
+      "website": "https://www.siemens-energy.com",
+      "phone": "+49-89-636-00",
+      "address": "مونیخ، آلمان"
+    },
+    {
+      "id": "2",
+      "name": "ABB",
+      "brand": "ABB",
+      "website": "https://new.abb.com",
+      "phone": "+41-43-317-71-11",
+      "address": "زوریخ، سوئیس"
+    }
+  ],
+  "models": [
+    {
+      "id": "m1",
+      "name": "ترانسفورماتور ۶۶/۲۰ کیلوولت",
+      "description": "ترانسفورماتور قدرت دو سیم‌پیچه",
+      "releaseDate": "2023-01-15",
+      "status": "active"
+    }
+  ],
+  "series": [
+    {
+      "id": "s1",
+      "name": "سری SGT-800",
+      "code": "SGT800",
+      "description": "توربین گازی ۵۰ مگاواتی",
+      "status": "active"
+    }
+  ],
   "megaMenu": {
     "columns": [
       {

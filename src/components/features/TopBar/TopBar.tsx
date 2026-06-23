@@ -50,7 +50,7 @@ export function TopBar() {
           </span>
         </Link>
 
-        <Divider type="vertical" className="!h-5 !border-slate-200 hidden md:block" />
+        <Divider orientation="vertical" className="!h-5 !border-slate-200 hidden md:block" />
 
         <nav className="hidden md:flex items-center gap-1">
           <Link to="/">

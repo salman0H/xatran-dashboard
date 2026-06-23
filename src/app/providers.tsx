@@ -1,4 +1,6 @@
+// src/app/providers.tsx (wrap with Antd App)
 import { type ReactNode } from 'react'
+import { App as AntdApp } from 'antd'
 import { AppProvider } from '@/context/AppContext'
 import { ErrorBoundary } from '@/components/primitives/ErrorBoundary/ErrorBoundary'
 import { ConfigProvider } from 'antd'
@@ -32,7 +34,7 @@ function AntDesignProvider({ children }: { children: ReactNode }) {
         },
       }}
     >
-      {children}
+      <AntdApp>{children}</AntdApp>
     </ConfigProvider>
   )
 }

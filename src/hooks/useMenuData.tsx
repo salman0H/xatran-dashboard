@@ -15,7 +15,7 @@ export function useMenuData(): UseMenuDataResult {
   useEffect(() => {
     let cancelled = false
     fetchMenuItems()
-      .then((data) => {
+      .then((data : any) => {
         if (!cancelled) setMenuItems(data)
       })
       .catch((err: unknown) => {
