@@ -1,0 +1,86 @@
+{
+  "menus": [
+    {
+      "id": "main",
+      "label": "mainNav",
+      "items": [
+        {
+          "id": "dashboard",
+          "label": "dashboard",
+          "icon": "ti-layout-dashboard",
+          "route": "/"
+        },
+        {
+          "id": "asset-management",
+          "label": "assetManagement",
+          "icon": "ti-asset",
+          "children": [
+            {
+              "id": "assets",
+              "label": "assets",
+              "children": [
+                {
+                  "id": "basic-info",
+                  "label": "basicInfo",
+                  "children": [
+                    {
+                      "id": "manufacturer",
+                      "label": "manufacturer",
+                      "route": "/assets/manufacturer",
+                      "children": [
+                        {
+                          "id": "specs",
+                          "label": "specs",
+                          "route": "/assets/manufacturer/specs"
+                        },
+                        {
+                          "id": "attributes",
+                          "label": "features",
+                          "route": "/assets/manufacturer/attributes"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "operator",
+                      "label": "operator",
+                      "route": "/assets/operator",
+                      "children": [
+                        {
+                          "id": "specs-operator",
+                          "label": "specs",
+                          "route": "/assets/operator/specs"
+                        },
+                        {
+                          "id": "attributes-operator",
+                          "label": "features",
+                          "route": "/assets/operator/attributes"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "attributes-main",
+                      "label": "attributes",
+                      "route": "/assets/attributes",
+                      "children": [
+                        {
+                          "id": "specs-attributes",
+                          "label": "specs",
+                          "route": "/assets/attributes/specs"
+                        },
+                        {
+                          "id": "attributes-attributes",
+                          "label": "features",
+                          "route": "/assets/attributes/attributes"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

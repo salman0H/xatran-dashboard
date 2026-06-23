@@ -24,6 +24,16 @@
       "id": "advanced-table",
       "type": "advancedTable",
       "order": 4
+    },
+    {
+      "id": "substationsStats-1782206922645",
+      "type": "substationsStats",
+      "order": 5
+    },
+    {
+      "id": "stats-1782206925341",
+      "type": "stats",
+      "order": 6
     }
   ],
   "menus": [

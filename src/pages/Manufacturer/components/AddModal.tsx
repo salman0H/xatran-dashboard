@@ -38,7 +38,7 @@ const seriesSchema = z.object({
 })
 
 export function AddModal({ open, onClose, onSuccess, activeTab }: AddModalProps) {
-  const { t } = useTranslation('dashboard')
+  const { t } = useTranslation('manufacturer')
   const schema = activeTab === 'manufacturers' ? manufacturerSchema : activeTab === 'models' ? modelSchema : seriesSchema
   type FormValues = z.infer<typeof schema>
 

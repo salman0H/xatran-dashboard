@@ -1,0 +1,12 @@
+{
+  "dashboardWidgets": [
+    { "id": "stats", "type": "stats", "order": 0 },
+    { "id": "substations-stats", "type": "substationsStats", "order": 1 },
+    { "id": "user-profile", "type": "userProfile", "order": 2 },
+    { "id": "quick-actions", "type": "quickActions", "order": 3 },
+    { "id": "substations-table", "type": "substationsTable", "order": 4 },
+    { "id": "kpi", "type": "kpi", "order": 5 },
+    { "id": "chart", "type": "chart", "order": 6 },
+    { "id": "advanced-table", "type": "advancedTable", "order": 7 }
+  ]
+}

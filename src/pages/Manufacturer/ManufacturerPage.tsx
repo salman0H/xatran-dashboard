@@ -1,4 +1,3 @@
-// src/pages/Manufacturer/ManufacturerPage.tsx
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Row, Col, Card, Typography, Space, Avatar } from 'antd'
@@ -13,7 +12,7 @@ import { useAppContext } from '@/context/AppContext'
 const { Title, Text } = Typography
 
 export function ManufacturerPage() {
-  const { t } = useTranslation(['dashboard', 'common'])
+  const { t } = useTranslation('manufacturer')
   const { dir } = useAppContext()
   const { activeTab, setActiveTab, data, loading, stats, addItem } = useManufacturerData()
   const [modalOpen, setModalOpen] = useState(false)
@@ -27,8 +26,11 @@ export function ManufacturerPage() {
 
   return (
     <div className="p-4" dir={dir}>
-      <Title level={2}>{t('manufacturerPageTitle', 'مدیریت شرکت‌های سازنده')}</Title>
+      <Title level={2}>{t('pageTitle')}</Title>
       <Row gutter={[16, 16]}>
+        <Col xs={24} lg={6}>
+          <Sidebar activeTab={activeTab} onChange={setActiveTab} />
+        </Col>
         <Col xs={24} lg={18}>
           <StatsWidget stats={stats} activeTab={activeTab} onAdd={handleAdd} />
           <ManufacturerTable data={data} loading={loading} activeTab={activeTab} />
@@ -44,9 +46,6 @@ export function ManufacturerPage() {
               </div>
             </Space>
           </Card>
-        </Col>
-        <Col xs={24} lg={6}>
-          <Sidebar activeTab={activeTab} onChange={setActiveTab} />
         </Col>
       </Row>
       <AddModal

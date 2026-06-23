@@ -1,9 +1,7 @@
-// src/pages/Manufacturer/components/Sidebar.tsx
-import { Card, Radio, Typography } from 'antd'
+import { Card, Menu } from 'antd'
+import type { MenuProps } from 'antd'
 import { useTranslation } from 'react-i18next'
 import type { ActiveTab } from '../types/manufacturer.types'
-
-const { Text } = Typography
 
 interface SidebarProps {
   activeTab: ActiveTab
@@ -11,30 +9,41 @@ interface SidebarProps {
 }
 
 export function Sidebar({ activeTab, onChange }: SidebarProps) {
-  const { t } = useTranslation('dashboard')
+  const { t } = useTranslation('manufacturer')
+
+  const items: MenuProps['items'] = [
+    {
+      key: 'manufacturers',
+      label: t('manufacturers'),
+    },
+    {
+      key: 'models',
+      label: t('models'),
+    },
+    {
+      key: 'series',
+      label: t('series'),
+    },
+  ]
+
+  const handleMenuClick: MenuProps['onClick'] = (e) => {
+    onChange(e.key as ActiveTab)
+  }
 
   return (
     <Card
       title={t('selectCategory')}
       variant="borderless"
       className="shadow-sm h-full"
-      styles={{ body: { padding: '16px' } }}
+      styles={{ body: { padding: '8px 0' } }}
     >
-      <Radio.Group
-        value={activeTab}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full flex flex-col gap-2"
-      >
-        <Radio value="manufacturers" className="w-full py-1">
-          <Text strong>{t('manufacturers')}</Text>
-        </Radio>
-        <Radio value="models" className="w-full py-1">
-          <Text strong>{t('models')}</Text>
-        </Radio>
-        <Radio value="series" className="w-full py-1">
-          <Text strong>{t('series')}</Text>
-        </Radio>
-      </Radio.Group>
+      <Menu
+        mode="inline"
+        selectedKeys={[activeTab]}
+        items={items}
+        onClick={handleMenuClick}
+        className="!border-none"
+      />
     </Card>
   )
 }

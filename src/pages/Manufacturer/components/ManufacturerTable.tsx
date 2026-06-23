@@ -13,7 +13,7 @@ interface ManufacturerTableProps {
 }
 
 export function ManufacturerTable({ data, loading, activeTab }: ManufacturerTableProps) {
-  const { t } = useTranslation('dashboard')
+  const { t } = useTranslation('manufacturer')
 
   const getColumns = () => {
     if (activeTab === 'manufacturers') {

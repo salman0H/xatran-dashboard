@@ -1,0 +1,70 @@
+{
+  "megaMenu": {
+    "columns": [
+      {
+        "id": "col1",
+        "title": "assets",
+        "items": [
+          {
+            "id": "assets-root",
+            "label": "assets",
+            "icon": "ti-folder",
+            "route": "/assets"
+          }
+        ]
+      },
+      {
+        "id": "col2",
+        "title": "basicInfo",
+        "items": [
+          {
+            "id": "basic-info",
+            "label": "basicInfo",
+            "icon": "ti-file",
+            "route": "/basic-info",
+            "children": [
+              {
+                "id": "manufacturer",
+                "label": "manufacturer",
+                "icon": "ti-settings",
+                "route": "/manufacturer"
+              },
+              {
+                "id": "operator",
+                "label": "operator",
+                "icon": "ti-user",
+                "route": "/operator"
+              },
+              {
+                "id": "attributes",
+                "label": "attributes",
+                "icon": "ti-list",
+                "route": "/attributes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "col3",
+        "title": "details",
+        "items": [
+          {
+            "id": "specs",
+            "label": "specs",
+            "icon": "ti-file-text",
+            "route": "/specs",
+            "children": [
+              {
+                "id": "features",
+                "label": "features",
+                "icon": "ti-star",
+                "route": "/features"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -14,36 +14,38 @@ import type { Manufacturer, Model, Series, ActiveTab } from '../types/manufactur
 export function useManufacturerData() {
   const { message } = App.useApp()
   const [activeTab, setActiveTab] = useState<ActiveTab>('manufacturers')
-  const [data, setData] = useState<Manufacturer[] | Model[] | Series[]>([])
+  const [manufacturers, setManufacturers] = useState<Manufacturer[]>([])
+  const [models, setModels] = useState<Model[]>([])
+  const [series, setSeries] = useState<Series[]>([])
   const [loading, setLoading] = useState(true)
-  const [stats, setStats] = useState({ manufacturers: 0, models: 0, series: 0 })
 
-  const loadData = useCallback(async () => {
+  const loadAllData = useCallback(async () => {
     setLoading(true)
     try {
-      if (activeTab === 'manufacturers') {
-        const items = await fetchManufacturers()
-        setData(items)
-        setStats((prev) => ({ ...prev, manufacturers: items.length }))
-      } else if (activeTab === 'models') {
-        const items = await fetchModels()
-        setData(items)
-        setStats((prev) => ({ ...prev, models: items.length }))
-      } else {
-        const items = await fetchSeries()
-        setData(items)
-        setStats((prev) => ({ ...prev, series: items.length }))
-      }
+      const [manufData, modelData, seriesData] = await Promise.all([
+        fetchManufacturers(),
+        fetchModels(),
+        fetchSeries(),
+      ])
+      setManufacturers(manufData)
+      setModels(modelData)
+      setSeries(seriesData)
     } catch (error) {
       message.error('Failed to load data')
     } finally {
       setLoading(false)
     }
-  }, [activeTab, message])
+  }, [message])
 
   useEffect(() => {
-    loadData()
-  }, [loadData])
+    loadAllData()
+  }, [loadAllData])
+
+  const getDataForTab = useCallback(() => {
+    if (activeTab === 'manufacturers') return manufacturers
+    if (activeTab === 'models') return models
+    return series
+  }, [activeTab, manufacturers, models, series])
 
   const addItem = useCallback(
     async (values: any) => {
@@ -51,18 +53,13 @@ export function useManufacturerData() {
         let newItem
         if (activeTab === 'manufacturers') {
           newItem = await addManufacturer(values)
+          setManufacturers((prev) => [...prev, newItem])
         } else if (activeTab === 'models') {
           newItem = await addModel(values)
+          setModels((prev) => [...prev, newItem])
         } else {
           newItem = await addSeries(values)
-        }
-        setData((prev) => [...prev, newItem])
-        if (activeTab === 'manufacturers') {
-          setStats((prev) => ({ ...prev, manufacturers: prev.manufacturers + 1 }))
-        } else if (activeTab === 'models') {
-          setStats((prev) => ({ ...prev, models: prev.models + 1 }))
-        } else {
-          setStats((prev) => ({ ...prev, series: prev.series + 1 }))
+          setSeries((prev) => [...prev, newItem])
         }
         message.success('Item added successfully')
         return newItem
@@ -74,13 +71,19 @@ export function useManufacturerData() {
     [activeTab, message]
   )
 
+  const stats = {
+    manufacturers: manufacturers.length,
+    models: models.length,
+    series: series.length,
+  }
+
   return {
     activeTab,
     setActiveTab,
-    data,
+    data: getDataForTab(),
     loading,
     stats,
     addItem,
-    refetch: loadData,
+    refetch: loadAllData,
   }
 }
